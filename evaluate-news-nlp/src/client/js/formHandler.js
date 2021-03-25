@@ -6,7 +6,17 @@ function handleSubmit(event) {
     Client.checkForName(formText)
 
     console.log("::: Form Submitted :::")
-    fetch('http://localhost:8081/analysis')
+    fetch('http://localhost:8081/analysis', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/JSON",
+
+        },
+        body: 
+            JSON.stringify({
+                url: formText
+        })
+    })
     .then(res => res.json())
     .then(function(res) {
         document.getElementById('score').innerHTML = res.score_tag;
