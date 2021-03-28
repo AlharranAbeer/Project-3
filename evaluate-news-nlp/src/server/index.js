@@ -36,7 +36,7 @@ const BaseURL='https://api.meaningcloud.com/sentiment-2.1?';
 app.post('/add', async function(req,res){
     let parm =`key=${API_KEY}&url=${req.body.url}&lang=en`;
     console.log(BaseURL+parm);
-    const data = await fetch(BaseURL+parm)
+    const response = await fetch(BaseURL+parm)
     try {
         const data = await response.json()
         projectData = {
