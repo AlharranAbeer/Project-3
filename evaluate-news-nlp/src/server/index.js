@@ -57,9 +57,10 @@ app.post('/', async function(req,res){
             confidence:data.confidence,
             irony:data.irony
         }
-        console.log("FETCHED DATA: \n"+data);
+        console.log("FETCHED DATA: \n score:"+data.score_tag);
+        console.log("FETCHED DATA: \n agreement:"+data.agreement);
+        res.send(data);
     }catch(error){
         console.log(error);
     }
-    res.send(data);
 })

@@ -5,7 +5,8 @@ async function handleSubmit(event) {
     // check the url Validity 
     Client.checkForURL(formText)
     console.log("::: Form Submitted :::")
-    const results = await postData('http://localhost:8081/', { formText })
+    const results = await postData('http://localhost:8081/', { formText });
+    console.log("RESULTS FROM POST "+results);
     UpdateUI(results);
 }
 // from the previous project 
