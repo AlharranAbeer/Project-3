@@ -1,24 +1,25 @@
+let formText="";
 async function handleSubmit(event) {
     event.preventDefault()
     // check what text was put into the form field
-    let formText = document.getElementById('name').value
+    formText = document.getElementById('name').value
     // check the url Validity 
     Client.checkForURL(formText)
     console.log("::: Form Submitted :::")
-    const results = await postData('http://localhost:8081/', { formText });
+    const results = await postData('http://localhost:8081/add', { formText });
     console.log("RESULTS FROM POST "+results);
     UpdateUI(results);
 }
 // from the previous project 
-const postData = async (url = "http://localhost:8081/" , data = {})=> {
-    const res = await fetch('http://localhost:8081/' , {
+const postData = async (url = "http://localhost:8081/add" , data = {})=> {
+    const res = await fetch('http://localhost:8081/add' , {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
             'Content-Type' : 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify(data), // body data type must match "Content-Type" header    
+        body: JSON.stringify({url:formText}), // body data type must match "Content-Type" header    
     });
     try{
         const newData = await res.json();
