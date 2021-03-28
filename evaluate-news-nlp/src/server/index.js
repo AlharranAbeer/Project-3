@@ -43,8 +43,9 @@ app.listen(8081, function () {
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
-app.post('/add', async function(req,res){
+app.post('/', async function(req,res){
     let parm =`key=${API_KEY}&url=${req.body.articleurl}&lang=en&model=general`;
+    console.log("Article URL"+ req.body.articleurl);
     const {formText} = req.body;
     const data = await fetch(BaseURL+parm)
     try {
@@ -56,8 +57,9 @@ app.post('/add', async function(req,res){
             confidence:data.confidence,
             irony:data.irony
         }
-        res.send(data);
+        console.log("FETCHED DATA: \n"+data);
     }catch(error){
         console.log(error);
     }
+    res.send(data);
 })

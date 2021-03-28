@@ -4,6 +4,7 @@ function checkForURL(inputText) {
 
     //check if the input matches the regular expression
     if(inputText.match(regex)){
+        console.log("Valid URL");
         return true;
     }
     else{

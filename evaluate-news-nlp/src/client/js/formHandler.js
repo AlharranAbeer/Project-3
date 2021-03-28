@@ -5,16 +5,17 @@ async function handleSubmit(event) {
     // check the url Validity 
     Client.checkForURL(formText)
     console.log("::: Form Submitted :::")
-    const results = await postData('http://localhost:8081/add', { formText })
+    const results = await postData('http://localhost:8081/', { formText })
     UpdateUI(results);
 }
 // from the previous project 
-const postData = async (url = "http://localhost:8081/add" , data = {})=> {
-    const res = await fetch('http://localhost:8081/add' , {
+const postData = async (url = "http://localhost:8081/" , data = {})=> {
+    const res = await fetch('http://localhost:8081/' , {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
             'Content-Type' : 'application/json',
+            'Accept': 'application/json'
         },
         body: JSON.stringify(data), // body data type must match "Content-Type" header    
     });
