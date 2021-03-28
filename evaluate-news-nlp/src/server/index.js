@@ -46,8 +46,6 @@ app.post('/add', async function(req,res){
             confidence:data.confidence,
             irony:data.irony
         }
-        console.log("FETCHED DATA: \n score:"+data.score_tag);
-        console.log("FETCHED DATA: \n agreement:"+data.agreement);
         res.send(projectData);
     }catch(error){
         console.log(error);
